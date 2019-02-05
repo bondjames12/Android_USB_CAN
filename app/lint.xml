@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <issue id="ContentDescription">
+        <ignore path="res/layout/activity_main.xml" />
+        <ignore path="res/layout/fmradio.xml" />
+    </issue>
+    <issue id="HardcodedText">
+        <ignore path="res/layout/activity_main.xml" />
+        <ignore path="res/layout/fmradio.xml" />
+    </issue>
+    <issue id="RtlHardcoded">
+        <ignore path="res/layout/activity_main.xml" />
+        <ignore path="res/layout/fmradio.xml" />
+    </issue>
+    <issue id="SpUsage">
+        <ignore path="res/layout/fmradio.xml" />
+    </issue>
+</lint>

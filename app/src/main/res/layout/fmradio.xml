@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- Seperator line above Presets -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/iv_seekdn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sel_stop_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="center"
+                android:src="@drawable/btn_rw"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_rssi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="RSSI"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="#ffa3a3a3"
+            android:textSize="35sp"
+            android:textStyle="normal" />
+        <ImageView android:id="@+id/iv_stereo" android:contentDescription="Stereo" android:layout_width="0dip" android:layout_height="match_parent" android:layout_weight="1"
+      android:focusable="true" android:clickable="true" android:src="@drawable/sel_record"              android:scaleType="center" android:layout_centerInParent="true" />
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="top|center_horizontal"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Frequency"
+                android:gravity="center_vertical|center_vertical"
+                android:text="info"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#32b5e5"
+                android:textSize="40dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="top|center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/iv_seekup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="false"
+                android:background="@drawable/sel_stop_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="center"
+                android:src="@drawable/btn_ff"
+                android:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="15"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/freq_dial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/iv_prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dip"
+                android:layout_marginTop="0dip"
+                android:background="@drawable/sel_prev_bg"
+                android:contentDescription="Previous"
+                android:src="@drawable/sel_prev" />
+
+            <ImageView
+                android:id="@+id/iv_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="0dip"
+                android:layout_marginTop="0dip"
+                android:background="@drawable/sel_prev_bg"
+                android:contentDescription="Next"
+                android:src="@drawable/sel_next" />
+
+            <LinearLayout
+                android:id="@+id/vis"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="false"
+                android:contentDescription="Visualizer"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/tv_freq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:contentDescription="Frequency"
+                    android:gravity="center_vertical|center_vertical|center_horizontal"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#32b5e5"
+                    android:textSize="140dp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="4dip"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:layout_marginTop="2dip"
+                android:background="@drawable/sel_stop_bg"
+                android:clickable="true"
+                android:contentDescription="Stop"
+                android:focusable="true"
+                android:scaleType="center"
+                android:src="@drawable/dial_power_off_250sc"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/iv_paupla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="4dip"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:layout_marginTop="2dip"
+                android:background="@drawable/sel_stop_bg"
+                android:clickable="true"
+                android:contentDescription="Pause / Play"
+                android:focusable="true"
+                android:scaleType="center"
+                android:src="@drawable/btn_play"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:background="#000000" />
+
+    <!-- Presets -->
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_marginBottom="0.0dip"
+        android:layout_marginLeft="0.0dip"
+        android:layout_marginRight="0.0dip"
+        android:layout_marginTop="0.0dip"
+        android:layout_weight="5"
+        android:fadingEdge="none"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            android:layoutAnimation="@anim/ani_preset_layout"
+            android:orientation="horizontal" >
+
+            <FrameLayout
+                android:id="@+id/fr_preset_0"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 0"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_0"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_0"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_1"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 1"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_1"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_1"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_2"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 2"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_2"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_2"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_3"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 3"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_3"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_3"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_4"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 4"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_4"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_4"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_5"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 5"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_5"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_5"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_6"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 6"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_6"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_6"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_7"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 7"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_7"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_7"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_8"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 8"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_8"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_8"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_9"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 9"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_9"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_9"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_10"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 10"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_10"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_10"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_11"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 11"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_11"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_11"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_12"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 12"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_12"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_12"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_13"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 13"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_13"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_13"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_14"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 14"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_14"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_14"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fr_preset_15"
+                android:layout_width="80.0dip"
+                android:layout_height="match_parent"
+                android:contentDescription="Preset 15"
+                android:scaleType="center" >
+
+                <TextView
+                    android:id="@+id/tv_preset_15"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:text=""
+                    android:textSize="15.0dip" />
+
+                <ImageButton
+                    android:id="@+id/ib_preset_15"
+                    android:layout_width="80.0dip"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:scaleType="center"
+                    android:src="@drawable/btn_preset" />
+            </FrameLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

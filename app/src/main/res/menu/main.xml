@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.xwell.android_usb_can.MainActivity" >
+
+    <item android:id="@+id/mnuSettings" android:title="@string/mnuSettings"></item>
+    <item android:id="@+id/mnuUSBcandebug" android:title="@string/mnuUSBcandebug"></item>
+    <item android:id="@+id/mnuStartService" android:title="@string/mnuStartService"></item>
+    <item android:id="@+id/mnuStopService" android:title="@string/mnuStopService"></item>
+    <item android:id="@+id/mnuTest" android:title="Test"></item>
+    <item android:id="@+id/mnuExit" android:title="@string/mnuExit"></item>
+    
+
+</menu>

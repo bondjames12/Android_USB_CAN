@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:robobunny="http://robobunny.com"
+    android:key="preference_screen">
+
+    <PreferenceCategory android:title="USB CAN Settings">
+       <com.xwell.usbcan.ui.SeekBarPreference
+            android:key="balance"
+            android:title="Balance"
+            android:summary="Adjust Left/Right Balance"
+            android:defaultValue="0"
+            android:max="9"
+            robobunny:min="-9"
+            robobunny:unitsLeft="L"
+            robobunny:unitsRight="R"
+    	/>
+       <com.xwell.usbcan.ui.SeekBarPreference
+            android:key="fade"
+            android:title="Fade"
+            android:summary="Adjust Front/Rear Fade"
+            android:defaultValue="0"
+            android:max="9"
+            robobunny:min="-9"
+            robobunny:unitsLeft="F"
+            robobunny:unitsRight="R"
+    	/>
+       <com.xwell.usbcan.ui.SeekBarPreference
+            android:key="bass"
+            android:title="Bass"
+            android:summary="Adjust Bass Level"
+            android:defaultValue="0"
+            android:max="9"
+            robobunny:min="-9"
+            robobunny:unitsLeft=""
+            robobunny:unitsRight=""
+    	/>
+       <com.xwell.usbcan.ui.SeekBarPreference
+            android:key="mid"
+            android:title="Mid"
+            android:summary="Adjust Mid Level"
+            android:defaultValue="0"
+            android:max="9"
+            robobunny:min="-9"
+            robobunny:unitsLeft=""
+            robobunny:unitsRight=""
+    	/>
+       <com.xwell.usbcan.ui.SeekBarPreference
+            android:key="treble"
+            android:title="Treble"
+            android:summary="Adjust Treble Level"
+            android:defaultValue="0"
+            android:max="9"
+            robobunny:min="-9"
+            robobunny:unitsLeft=""
+            robobunny:unitsRight=""
+    	/>
+    </PreferenceCategory>
+    
+</PreferenceScreen>

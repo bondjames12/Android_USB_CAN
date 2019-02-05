@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Android_USB_CAN</string>
+    <string name="app_FMname">FM Radio</string>
+    
+    <!--  widget -->
+	<string name="dlg_ok">Add</string>
+
+	<string name="all_volume_title">Volume</string>
+	<string name="ring_volume_title">Ringtone</string>
+	<string name="incoming_call_volume_title">Ringtone</string>
+	<string name="notification_volume_title">Notification</string>
+	<string name="media_volume_title">Media</string>
+	<string name="alarm_volume_title">Alarm</string>
+
+	<string name="prefs_base_name">com.xwell.usbcan.preferences</string>
+	<string name="VOLUME_DOWN">com.xwell.usbcan.VOLUME_DOWN</string>
+	<string name="VOLUME_UP">com.xwell.usbcan.VOLUME_UP</string>
+	<string name="VOLUME_SET">com.xwell.usbcan.VOLUME_SET</string>
+	<string name="VOLUME_CHANGED">android.media.VOLUME_CHANGED_ACTION</string>
+	<string name="STREAM_PREF">stream</string>
+	<string name="AWI_EXTRA">appWidgetId</string>
+	<string name="VOL_EXTRA">volume</string>
+	<string name="STREAM_EXTRA">stream</string>
+	<string name="usbcan_volume_title">USB CAN</string>
+	
+	<!-- Menu strings -->
+	<string name="mnuStopService">Stop Service</string>
+	<string name="mnuUSBcandebug">Debug</string>
+	<string name="mnuSettings">Settings</string>
+	<string name="mnuStartService">Start Service</string>
+	<string name="mnuExit">Exit</string>
+</resources>
