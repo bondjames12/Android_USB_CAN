@@ -70,6 +70,7 @@ public class USBCANMonitor extends Service implements IUsbConnectionHandler {
 	public static final int MSG_FM_GET_STATUS = 31;
 	public static final int MSG_FM_SET_POWER = 32;
 	public static final int MSG_TEENSY_GET_STATUS = 33;
+	public static final int MSG_TEENSY_VOLUME_CHANGE  = 34;
 	//Commands constants to use when sending/receiving data to USB arduino device
 	public static final byte USB_CANFRAME = 0x1;
 	public static final byte USB_RESET = 0x2;
@@ -97,6 +98,7 @@ public class USBCANMonitor extends Service implements IUsbConnectionHandler {
 	public static final byte USBRECEIVE_FM_POWER = 0x05;
 	public static final byte USBRECEIVE_FM_STATUS = 0x06;
 	public static final byte USBRECEIVE_TEENSY_STATUS = 0x07;
+	public static final byte USBRECEIVE_TEENSY_VOLUME_CHANGE = 0x08;
 	
 	private static HidBridge sHidBridge;
 	/** Keeps track of all current registered clients. */
@@ -454,10 +456,14 @@ public class USBCANMonitor extends Service implements IUsbConnectionHandler {
 				if ((cmd & 0x00000004) != 0) 
 				{
 					//volume down HANDLED ONLY ON TEENSY DEVICE
+					AudioManager audioManager =	(AudioManager)this.getSystemService(AUDIO_SERVICE);
+					audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,	AudioManager.ADJUST_LOWER,AudioManager.FLAG_SHOW_UI);
 				}
 				else if ((cmd & 0x00000002) != 0) 
 				{
 					//volume up HANDLED ONLY ON TEENSY DEVICE
+					AudioManager audioManager =	(AudioManager)this.getSystemService(AUDIO_SERVICE);
+					audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,	AudioManager.ADJUST_RAISE,AudioManager.FLAG_SHOW_UI);
 				}
 				else if ((cmd & 0x00000010) != 0) //left down steering wheel button
 				{
@@ -556,6 +562,9 @@ public class USBCANMonitor extends Service implements IUsbConnectionHandler {
             msg.replyTo = mMessenger;
             msg.arg1 = rssi;
             msg.arg2 = stereo;
+			com.xwell.usbcan.usb.USBData usbData = new com.xwell.usbcan.usb.USBData();
+			usbData.set_byte(data);
+			msg.obj = usbData;
 			sendMessageToAllClients(msg);
 			break;
 		}
@@ -566,6 +575,31 @@ public class USBCANMonitor extends Service implements IUsbConnectionHandler {
 			Message msg = Message.obtain(null,USBCANMonitor.MSG_TEENSY_GET_STATUS);
             msg.replyTo = mMessenger;
             msg.arg1 = A8_State;
+			sendMessageToAllClients(msg);
+			break;
+		}
+		case USBRECEIVE_TEENSY_VOLUME_CHANGE: //A USB Teensy volume change
+		{
+			byte change = data[2]; //volume change amount (negative is down)
+			byte mute = data[3]; //1 if muted, 0 if not
+			Log.d(LOG_TAG, "Teensy Volume Changed State: " + change);
+			Message msg = Message.obtain(null,USBCANMonitor.MSG_TEENSY_VOLUME_CHANGE);
+			msg.replyTo = mMessenger;
+			msg.arg1 = change;
+			msg.arg2 = mute;
+
+			AudioManager audioManager =	(AudioManager)this.getSystemService(AUDIO_SERVICE);
+
+			if(mute == 1){
+				audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,	AudioManager.ADJUST_MUTE,AudioManager.FLAG_SHOW_UI);
+			} else {
+				audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,	AudioManager.ADJUST_UNMUTE,AudioManager.FLAG_SHOW_UI);
+			}
+			if(change > 0)
+				audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,	AudioManager.ADJUST_RAISE,AudioManager.FLAG_SHOW_UI);
+			if(change < 0)
+				audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,	AudioManager.ADJUST_LOWER,AudioManager.FLAG_SHOW_UI);
+
 			sendMessageToAllClients(msg);
 			break;
 		}

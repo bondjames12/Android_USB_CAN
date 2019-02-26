@@ -385,7 +385,36 @@ public class HidBridge {
 		
 		return builder.toString();
 	}
-	
+
+	public void sendUSBCommand(byte[] payload)
+	{
+		AddWriteQueueData(payload);
+	}
+
+	public void sendUSBCommand(byte command, byte[] payload)
+	{
+		byte data[] = new byte[64];
+		data[0] = command;
+		for (int i=1; i<payload.length; i++)
+		{
+			if(i>=64) break;
+			data[i] = payload[i];
+		}
+		AddWriteQueueData(data);
+	}
+
+	public void sendUSBCommand(byte command, byte payload1, byte[] payload2)
+	{
+		byte data[] = new byte[64];
+		data[0] = command;
+		for (int i=1; i<payload2.length; i++)
+		{
+			if(i>=64) break;
+			data[i] = payload2[i];
+		}
+		AddWriteQueueData(data);
+	}
+
 	public void sendUSBCommand(byte command, byte payload)
 	{
 		byte data[] = new byte[64];

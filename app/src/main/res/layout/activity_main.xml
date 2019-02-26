@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Service Status:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-    <include layout="@layout/fmradio"/>
+
+    <include layout="@layout/fmradio" />
 
 </LinearLayout>

@@ -148,6 +148,7 @@ public class MainActivity extends Activity {
                     txtServiceStatus.setText("Service Status: " + status);
                     break;
                 case USBCANMonitor.MSG_FM_SET_CHANNEL:
+                    m_radio_channel = msg.arg1;
                 	setFreqDisplay(msg.arg1);
                     break;
                 case USBCANMonitor.MSG_FM_SET_POWER:
@@ -155,9 +156,12 @@ public class MainActivity extends Activity {
                 	radioSetGUIPower();
                     break;
                 case USBCANMonitor.MSG_FM_GET_STATUS:
-                	radioSetGUIRSSI(msg.arg1);
+					com.xwell.usbcan.usb.USBData data = (com.xwell.usbcan.usb.USBData) msg.obj;
+					byte[] bData = data.get_byte();
+                	radioSetGUIRSSI(bData[2]);
+					setFreqDisplay(bData[5]);
                 	// Record Start/Stop:
-                    if (msg.arg2 == 1) {
+                    if (bData[3] == 1) {
                       m_iv_stereo.setImageResource (R.drawable.btn_record_press);
                     }
                     else {
@@ -185,6 +189,8 @@ public class MainActivity extends Activity {
                         }
                     });
                     break;
+				case USBCANMonitor.MSG_TEENSY_VOLUME_CHANGE:
+					break;
                 default:
                     super.handleMessage(msg);
             }
@@ -554,8 +560,7 @@ public class MainActivity extends Activity {
 	  //Tune radio by channel number
 	  private void radio_channel_tune (int channel) {
 		  if(channel < 0) channel = 0;
-		  if(channel > 102) channel = 102;
-		  setFreqDisplay(channel);
+          if(channel > 102) channel = 102;
 		//Send message to USB service which then send data over USB to the teensy
 		try {
             Message msg = Message.obtain(null,USBCANMonitor.MSG_FM_SET_CHANNEL);
@@ -583,7 +588,7 @@ public class MainActivity extends Activity {
 			            mService.send(msg);
 			        } catch (RemoteException e) {
 			        }
-				   rssiHandler.postDelayed(this, 2500);
+				   rssiHandler.postDelayed(this, 6000);
 			   }
 		   }
 		}; 
@@ -597,12 +602,12 @@ public class MainActivity extends Activity {
 		
 		m_iv_prev = (ImageView) findViewById (R.id.iv_prev);
 		m_iv_prev.setOnClickListener (radio_short_click_lstnr);
-		m_iv_prev.setOnTouchListener(new RepeatListener(true,false, 400,100));
+		//m_iv_prev.setOnTouchListener(new RepeatListener(true,false, 400,100));
 		m_iv_prev.setId (R.id.iv_prev);
 		
 		m_iv_next = (ImageView) findViewById (R.id.iv_next);
 		m_iv_next.setOnClickListener (radio_short_click_lstnr);
-		m_iv_next.setOnTouchListener(new RepeatListener(true,false, 400, 100));
+		//m_iv_next.setOnTouchListener(new RepeatListener(true,false, 400, 100));
 		m_iv_next.setId (R.id.iv_next);
 		
 		m_tv_rssi = (TextView) findViewById (R.id.tv_rssi);
@@ -620,10 +625,10 @@ public class MainActivity extends Activity {
 		
 		m_iv_stereo = (ImageView) findViewById (R.id.iv_stereo);
 
-		radio_presets_setup(Color.BLUE);
+		radio_presets_setup();
 	  }
 	  
-	  private void radio_presets_setup (int clr) {// 16 Max Preset Buttons hardcoded
+	  private void radio_presets_setup () {// 16 Max Preset Buttons hardcoded
 	    // Textviews:
 	    m_preset_tv [0] = (TextView) findViewById (R.id.tv_preset_0);
 	    m_preset_tv [1] = (TextView) findViewById (R.id.tv_preset_1);
@@ -685,7 +690,6 @@ public class MainActivity extends Activity {
 	        m_preset_channel [idx] = 0;
 	        m_preset_name [idx] = "";
 	      }
-	      m_preset_tv [idx].setTextColor (clr);
 	    }
 
 	    Log.d(TAG,"m_presets_curr: " + m_presets_curr);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -21,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/iv_seekdn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="@drawable/sel_stop_bg"
                 android:clickable="true"
                 android:focusable="true"
@@ -34,16 +35,25 @@
         <TextView
             android:id="@+id/tv_rssi"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:contentDescription="RSSI"
             android:gravity="center_horizontal"
             android:singleLine="true"
-            android:text=""
+            android:textAlignment="center"
             android:textColor="#ffa3a3a3"
             android:textSize="35sp"
             android:textStyle="normal" />
-        <ImageView android:id="@+id/iv_stereo" android:contentDescription="Stereo" android:layout_width="0dip" android:layout_height="match_parent" android:layout_weight="1"
-      android:focusable="true" android:clickable="true" android:src="@drawable/sel_record"              android:scaleType="center" android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/iv_stereo"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="Stereo"
+            android:focusable="true"
+            android:scaleType="fitStart"
+            android:src="@drawable/sel_record"
+            android:layout_width="wrap_content" />
 
         <LinearLayout
             android:layout_width="0dip"
@@ -58,7 +68,6 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="Frequency"
                 android:gravity="center_vertical|center_vertical"
-                android:text="info"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#32b5e5"
                 android:textSize="40dp" />
@@ -74,9 +83,8 @@
 
             <ImageView
                 android:id="@+id/iv_seekup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="false"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="@drawable/sel_stop_bg"
                 android:clickable="true"
                 android:focusable="true"
@@ -99,22 +107,22 @@
 
             <ImageView
                 android:id="@+id/iv_prev"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="0dip"
-                android:layout_marginTop="0dip"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="false"
                 android:background="@drawable/sel_prev_bg"
                 android:contentDescription="Previous"
+                android:scaleType="fitCenter"
                 android:src="@drawable/sel_prev" />
 
             <ImageView
                 android:id="@+id/iv_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="0dip"
-                android:layout_marginTop="0dip"
+                android:layout_centerInParent="true"
                 android:background="@drawable/sel_prev_bg"
                 android:contentDescription="Next"
                 android:src="@drawable/sel_next" />
@@ -126,10 +134,12 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_centerInParent="false"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
                 android:contentDescription="Visualizer"
                 android:gravity="center_vertical|center_horizontal"
                 android:orientation="horizontal"
-                android:visibility="visible" >
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/tv_freq"
@@ -146,19 +156,19 @@
 
             <ImageView
                 android:id="@+id/iv_power"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginBottom="4dip"
+                android:layout_alignParentBottom="true"
                 android:layout_marginLeft="2dip"
-                android:layout_marginRight="2dip"
                 android:layout_marginTop="2dip"
+                android:layout_marginRight="2dip"
+                android:layout_marginBottom="4dip"
                 android:background="@drawable/sel_stop_bg"
                 android:clickable="true"
                 android:contentDescription="Stop"
                 android:focusable="true"
-                android:scaleType="center"
+                android:scaleType="fitCenter"
                 android:src="@drawable/dial_power_off_250sc"
                 android:visibility="visible" />
 
@@ -214,7 +224,7 @@
                 android:layout_width="80.0dip"
                 android:layout_height="match_parent"
                 android:contentDescription="Preset 0"
-                android:scaleType="center" >
+                android:scaleType="center">
 
                 <TextView
                     android:id="@+id/tv_preset_0"
@@ -222,12 +232,13 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:scaleType="center"
-                    android:text=""
-                    android:textSize="15.0dip" />
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_0"
-                    android:layout_width="80.0dip"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="#00000000"
                     android:scaleType="center"
@@ -248,7 +259,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_1"
@@ -273,7 +287,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_2"
@@ -298,7 +315,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_3"
@@ -323,7 +343,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_4"
@@ -348,7 +371,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_5"
@@ -373,7 +399,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_6"
@@ -398,7 +427,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_7"
@@ -423,7 +455,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_8"
@@ -448,7 +483,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_9"
@@ -473,7 +511,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_10"
@@ -498,7 +539,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_11"
@@ -523,7 +567,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_12"
@@ -548,7 +595,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_13"
@@ -573,7 +623,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_14"
@@ -598,7 +651,10 @@
                     android:gravity="center"
                     android:scaleType="center"
                     android:text=""
-                    android:textSize="15.0dip" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ib_preset_15"
